@@ -17,7 +17,7 @@ class Web(commands.Cog):
     @commands.command()
     async def error(self, ctx, *, query):
         try :
-            for link in search(query = 'stackoverflow question '+query, tld='co.in', lang='en', num=1, start=0, stop=1, pause=1.0):
+            for link in search(query = 'stackoverflow what is '+query, tld='co.in', lang='en', num=1, start=0, stop=1, pause=1.0):
 
                 OverFlow = SO(link)
                 post = OverFlow.ScrapContent()
