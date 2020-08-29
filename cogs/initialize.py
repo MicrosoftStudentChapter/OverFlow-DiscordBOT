@@ -7,7 +7,7 @@ class Initialize(commands.Cog):
         self.client = client
         self.welcomeMessage = "Welcome to Microsoft Student Chapter's Open Source Community. \nWe are elated to have you on board with us. \nHope you have a memorable experience with us. \nRegards, \n**Microsoft Student Chapter**"
 
-    ver = 1.0
+    ver = '1.0.1'
 
     @commands.Cog.listener()
     async def on_ready(self):

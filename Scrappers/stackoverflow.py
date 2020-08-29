@@ -25,7 +25,7 @@ class StackOverflow () :
         
         answerBlock = SOUP.select('#answers')[0]
 
-        answerContent = answerBlock.select('.post-text')[0].getText()
+        answerContent = answerBlock.select('.js-post-body')[0].getText()
         upVotes = answerBlock.select('.js-vote-count')[0].getText()
         accepted = bool(answerBlock.find('div', class_='accepted-answer'))
 
