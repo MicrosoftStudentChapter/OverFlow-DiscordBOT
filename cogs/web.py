@@ -37,9 +37,10 @@ class Web(commands.Cog):
 
         try:
             problem = await compete.get_problem()
-            await ctx.send(problem['problem'])
-            await ctx.send(f'Problem Link -> {problem["problem_link"]}')
-        except:
+            await ctx.send(f'```{problem["problem"]}```\nProblem Link -> {problem["problem_link"]}\n')
+
+        except Exception as e:
+            print(e)
             await ctx.send(f'> Something\'s broken :woozy_facy')
 
 

@@ -3,6 +3,15 @@ from json import loads
 from random import choice
 import lxml.html
 
+import re
+
+def replace(string, substitutions):
+
+    substrings = sorted(substitutions, key=len, reverse=True)
+    regex = re.compile('|'.join(map(re.escape, substrings)))
+    return regex.sub(lambda match: substitutions[match.group(0)], string)
+
+
 async def get_problem():
     # Getting Tag list from codechef
     tag_list = loads(get("https://www.codechef.com/get/tags/problems/").content)
@@ -24,7 +33,23 @@ async def get_problem():
 
     # Making Problem Body Clean
     problem = lxml.html.document_fromstring(problem).text_content()
-    problem.replace("$","`")
+
+    max_message_length = 1900
+    if len(problem) >= max_message_length:
+        problem = problem[:max_message_length] + "\n.\n.\n."
+    
+    replace_table = {
+                "\\leq": "<=",
+                "\\geq": ">=",
+                "\\le": "<",
+                "\\ge": ">",
+                "\\eq": "=",
+                "$": "",
+            }
+
+    problem = replace(problem, replace_table)
+
+    
 
     return {
             "problem": problem,
