@@ -20,7 +20,7 @@ class Web(commands.Cog):
             for link in search(query = 'stackoverflow what is '+query, tld='co.in', lang='en', num=1, start=0, stop=1, pause=1.0):
 
                 OverFlow = SO(link)
-                post = OverFlow.ScrapContent()
+                post = await OverFlow.ScrapContent()
                 if post["accepted"]:
                     await ctx.send(f'``` {post["answerContent"]} ``` :white_check_mark: \n :arrow_up: {post["upVotes"]} ')
                 else :

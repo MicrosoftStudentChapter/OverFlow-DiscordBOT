@@ -17,7 +17,7 @@ class StackOverflow () :
     def __init__(self, link):
       self.link = link
 
-    def ScrapContent (self) :
+    async def ScrapContent (self) :
         REQUEST = requests.get(self.link)
         responseText = REQUEST.text
 
@@ -36,3 +36,4 @@ class StackOverflow () :
         }
 
         return post
+
