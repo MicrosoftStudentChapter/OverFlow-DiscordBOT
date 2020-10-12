@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from googlesearch import search
 from Scrappers.stackoverflow import StackOverflow as SO
-
+from Scrappers import compete
 
 class Web(commands.Cog):
 
@@ -28,6 +28,19 @@ class Web(commands.Cog):
 
         except:
             await ctx.send(f'> Something\'s broken :woozy_face: ! Try modifying your query.')
+
+    @commands.command(aliases = ['cp', 'codechef', 'compete'])
+    async def chef(self, ctx):
+        '''
+        Fetch random problem from Codechef
+        '''
+
+        try:
+            problem = await compete.get_problem()
+            await ctx.send(problem['problem'])
+            await ctx.send(f'Problem Link -> {problem["problem_link"]}')
+        except:
+            await ctx.send(f'> Something\'s broken :woozy_facy')
 
 
 def setup(client):
