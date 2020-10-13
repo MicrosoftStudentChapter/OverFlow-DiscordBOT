@@ -1,10 +1,10 @@
+import re
 from json import loads
 from json.decoder import JSONDecodeError
-import httpx
 from random import choice
-import lxml.html
 
-import re
+import httpx
+import lxml.html
 
 
 class CodechefTooManyRequests(Exception):

@@ -1,8 +1,10 @@
 import discord
 from discord.ext import commands
 from googlesearch import search
-from Scrappers.stackoverflow import StackOverflow as SO
+
 from Scrappers import compete
+from Scrappers.stackoverflow import StackOverflow as SO
+
 
 class Web(commands.Cog):
 
