@@ -34,8 +34,9 @@ class Web(commands.Cog):
                 else :
                     await ctx.send(f'``` {post["answerContent"]} ``` \n :arrow_up: {post["upVotes"]} ')
 
-        except:
+        except Exception as raised_exception:
             await ctx.send(f'> Something\'s broken :woozy_face: ! Try modifying your query.')
+            raise raised_exception
 
     @commands.command(aliases = ['cp', 'codechef', 'compete'])
     async def chef(self, ctx):
@@ -50,9 +51,9 @@ class Web(commands.Cog):
         except compete.CodechefTooManyRequests:
             await ctx.send(f'''\n**Too many requests to codechef too fast, please wait a bit !**\n''')
 
-        except Exception as e:
+        except Exception as raised_exception:
             await ctx.send(f'> Something\'s broken :woozy_face: !')
-            raise e
+            raise raised_exception
 
 def setup(client):
     client.add_cog(Web(client))
