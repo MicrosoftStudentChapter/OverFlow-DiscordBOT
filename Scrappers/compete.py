@@ -42,8 +42,6 @@ async def get_problem():
             problem_response = await client.get("https://www.codechef.com/api/contests/PRACTICE/problems/"+random_problem_code)
             problem = loads(problem_response.content)["body"]
 
-            raise ValueError
-
         except JSONDecodeError as exception:
             raise CodechefTooManyRequests from exception
 
