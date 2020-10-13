@@ -11,11 +11,19 @@ class Web(commands.Cog):
 
     @commands.command()
     async def google(self, ctx, *, query):
+        '''
+        Get Google's first search result according to Your Query
+        '''
+        
         for result in search(query = query, tld='co.in', lang='en', num=1, start=0, stop=1, pause=1.0):
             await ctx.send(f'{result}')
     
     @commands.command()
     async def error(self, ctx, *, query):
+        '''
+        Get StackOverflow's solution to your query.
+        '''
+        
         try :
             for link in search(query = 'stackoverflow what is '+query, tld='co.in', lang='en', num=1, start=0, stop=1, pause=1.0):
 
@@ -32,7 +40,7 @@ class Web(commands.Cog):
     @commands.command(aliases = ['cp', 'codechef', 'compete'])
     async def chef(self, ctx):
         '''
-        Fetch random problem from Codechef
+        (alias = "cp" or "compete" or "codechef") Fetch random problem from Codechef
         '''
 
         try:
@@ -41,7 +49,7 @@ class Web(commands.Cog):
 
         except Exception as e:
             print(e)
-            await ctx.send(f'> Something\'s broken :woozy_facy')
+            await ctx.send(f'> Something\'s broken :woozy_face: !')
 
 
 def setup(client):
