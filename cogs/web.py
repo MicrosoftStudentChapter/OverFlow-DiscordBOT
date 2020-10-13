@@ -47,10 +47,12 @@ class Web(commands.Cog):
             problem = await compete.get_problem()
             await ctx.send(f'```{problem["problem"]}```\nProblem Link -> {problem["problem_link"]}\n')
 
-        except Exception as e:
-            print(e)
-            await ctx.send(f'> Something\'s broken :woozy_face: !')
+        except compete.CodechefTooManyRequests:
+            await ctx.send(f'''\n**Too many requests to codechef too fast, please wait a bit !**\n''')
 
+        except Exception as e:
+            await ctx.send(f'> Something\'s broken :woozy_face: !')
+            raise e
 
 def setup(client):
     client.add_cog(Web(client))
