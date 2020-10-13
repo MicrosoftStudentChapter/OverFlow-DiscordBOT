@@ -1,8 +1,10 @@
 import discord
 from discord.ext import commands
 from googlesearch import search
-from Scrappers.stackoverflow import StackOverflow as SO
+
 from Scrappers import compete
+from Scrappers.stackoverflow import StackOverflow as SO
+
 
 class Web(commands.Cog):
 
@@ -34,8 +36,9 @@ class Web(commands.Cog):
                 else :
                     await ctx.send(f'``` {post["answerContent"]} ``` \n :arrow_up: {post["upVotes"]} ')
 
-        except:
+        except Exception as raised_exception:
             await ctx.send(f'> Something\'s broken :woozy_face: ! Try modifying your query.')
+            raise raised_exception
 
     @commands.command(aliases = ['cp', 'codechef', 'compete'])
     async def chef(self, ctx):
@@ -47,10 +50,12 @@ class Web(commands.Cog):
             problem = await compete.get_problem()
             await ctx.send(f'```{problem["problem"]}```\nProblem Link -> {problem["problem_link"]}\n')
 
-        except Exception as e:
-            print(e)
-            await ctx.send(f'> Something\'s broken :woozy_face: !')
+        except compete.CodechefTooManyRequests:
+            await ctx.send(f'''\n**Too many requests to codechef too fast, please wait a bit !**\n''')
 
+        except Exception as raised_exception:
+            await ctx.send(f'> Something\'s broken :woozy_face: !')
+            raise raised_exception
 
 def setup(client):
     client.add_cog(Web(client))
