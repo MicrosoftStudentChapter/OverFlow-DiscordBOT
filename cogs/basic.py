@@ -35,18 +35,22 @@ class Basic(commands.Cog):
                     'As I see it, yes', 
                     'Most likely', 
                     'Outlook good', 
-                    'Yes Signs point to yes', 
+                    'Yes Signs point to yes',
+                    'I hate to say it, but it is what it is :orz:',
                     'Reply hazy', 
                     'try again', 
                     'Ask again later', 
                     'Better not tell you now', 
                     'Cannot predict now', 
                     'Concentrate and ask again', 
-                    'Dont count on it', 
+                    'Dont count on it',
+                    'Circuit overload.... :skull_crossbones:',
+                    'Its.... Impossible',
                     'My reply is no', 
                     'My sources say no', 
                     'Outlook not so good', 
-                    'Very doubtful']
+                    'Very doubtful',
+                    'I will agree to disagree on that']
 
         await ctx.send(f'Question : {question}\nAnswer : {random.choice(responses)}')
 
