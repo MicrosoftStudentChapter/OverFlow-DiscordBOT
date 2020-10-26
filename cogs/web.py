@@ -43,7 +43,7 @@ class Web(commands.Cog):
     @commands.command(aliases = ['cp', 'codechef', 'compete'])
     async def chef(self, ctx):
         '''
-        (alias = "cp" or "compete" or "codechef") Fetch random problem from Codechef
+        Fetch random problem from Codechef
         '''
 
         try:
