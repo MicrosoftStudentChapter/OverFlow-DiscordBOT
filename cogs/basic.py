@@ -50,7 +50,8 @@ class Basic(commands.Cog):
                     'My sources say no', 
                     'Outlook not so good', 
                     'Very doubtful',
-                    'I will agree to disagree on that']
+                    'I will agree to disagree on that',
+                    "I don't think so"]
 
         await ctx.send(f'Question : {question}\nAnswer : {random.choice(responses)}')
 
