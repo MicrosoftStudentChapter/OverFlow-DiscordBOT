@@ -1,6 +1,5 @@
+import httpx
 from bs4 import BeautifulSoup
-import requests
-
 
 """for link in search(query = 'stackoverflow C++ Segmentation fault', tld='co.in', lang='en', num=1, start=0, stop=1, pause=1.0):
 
@@ -17,9 +16,10 @@ class StackOverflow () :
     def __init__(self, link):
       self.link = link
 
-    def ScrapContent (self) :
-        REQUEST = requests.get(self.link)
-        responseText = REQUEST.text
+    async def ScrapContent (self) :
+        async with httpx.AsyncClient(timeout=20.0) as client:
+            REQUEST = await client.get(self.link)
+            responseText = REQUEST.text
 
         SOUP = BeautifulSoup(responseText, 'html.parser')
         
@@ -36,3 +36,4 @@ class StackOverflow () :
         }
 
         return post
+
